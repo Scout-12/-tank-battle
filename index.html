@@ -150,8 +150,8 @@ const MAP_TEMPLATE = [
     [0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
     [0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
     [0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
-    [0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,1,3,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,1,3,1,0,0,0,0,0,0,0,0],
 ];
 
 // ---------- utility ----------
@@ -346,7 +346,7 @@ class Game {
             { x: 9 * TILE, y: 0 },
             { x: 18 * TILE, y: 0 },
         ];
-        this.playerSpawn = { x: 9 * TILE, y: 18 * TILE };
+        this.playerSpawn = { x: 4 * TILE, y: 18 * TILE };
         this.keys = {};
         this.lastKeyDir = DIR.UP;
 
@@ -640,12 +640,12 @@ class Game {
             for (let c = 0; c < COLS; c++) {
                 const t = this.map[r][c];
                 const x = c * TILE, y = r * TILE;
+                const h = TILE / 2;
                 if (t === T.BRICK) {
                     ctx.fillStyle = '#cc6633';
                     ctx.fillRect(x, y, TILE, TILE);
                     ctx.strokeStyle = '#994422';
                     ctx.lineWidth = 1;
-                    const h = TILE / 2;
                     ctx.strokeRect(x, y, h, h);
                     ctx.strokeRect(x + h, y, h, h);
                     ctx.strokeRect(x, y + h, h, h);
